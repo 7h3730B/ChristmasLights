@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controlling my Christmas Lights over the web!</title>
+</head>
+
+<body>
+    <div id="container">
+        <button code="2000,1000,400,1000,400,400,1000,1000,400,1000,400,400,1000,1000,400,1000,400,400,2000,5600"
+            onclick="sendCode(this)">ON!</button>
+        <button code="2000,1000,400,1000,400,400,1000,1000,400,1000,400,400,1000,400,1000,400,1000,400,2000,5600"
+            onclick="sendCode(this)">OFF!</button>
+        <button code="2000,1000,400,1000,400,400,1000,1000,400,1000,400,400,1000,400,1000,400,1000,400,2000,5600"
+            onclick="sendCode(this)">Blink!</button>
+        <button code="2000,1000,400,1000,400,400,1000,1000,400,1000,400,400,1000,400,1000,1000,400,400,2000,5600"
+            onclick="sendCode(this)">lower Blink!</button>
+        <button code="2000,400,1000,1000,400,1000,400,1000,400,1000,400,400,1000,1000,400,1000,400,400,2000,5600"
+            onclick="sendCode(this)">Higher Blink!</button>
+    </div>
+
+    <script type="text/javascript">
+        function sendCode(element) {
+            let url = "http://192.168.178.97/api?0=";
+            let splitted = element.getAttribute("code").split(",");
+            let i;
+            for (i = 0; i < splitted.length - 1; i++) {
+                url += splitted[i] += "&" + (i + 1) + "=";
+            }
+            url += splitted[i];
+            fetch(url, () => { });
+        }
+    </script>
+</body>
