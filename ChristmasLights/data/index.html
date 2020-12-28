@@ -10,6 +10,7 @@
 
 <body>
     <div id="container">
+        <h1>SuperDuperCooleLights</h1>
         <button code="2000,1000,400,1000,400,400,1000,1000,400,1000,400,400,1000,1000,400,1000,400,400,2000,5600"
             onclick="sendCode(this)">ON!</button>
         <button code="2000,1000,400,1000,400,400,1000,1000,400,1000,400,400,1000,400,1000,400,1000,400,2000,5600"
@@ -24,7 +25,7 @@
 
     <script type="text/javascript">
         function sendCode(element) {
-            let url = "http://localhost/api?0=";
+            let url = `http://${window.location.host}/api?0=`;
             let splitted = element.getAttribute("code").split(",");
             let i;
             for (i = 0; i < splitted.length - 1; i++) {
